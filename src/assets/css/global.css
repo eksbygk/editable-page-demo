@@ -1,0 +1,27 @@
+html,
+body,
+#app {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* 文本域 */
+.el-textarea__inner {
+  resize: none;
+  border: 0;
+}
+
+/* 隐藏滚动条 */
+::-webkit-scrollbar {
+  width: 0 !important;
+}
+::-webkit-scrollbar {
+  width: 0 !important;
+  height: 0;
+}
+
+@font-face {
+  font-family: "Anton";
+  src: url("../font/Anton.ttf");
+}
