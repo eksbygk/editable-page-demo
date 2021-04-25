@@ -2,7 +2,11 @@
   <div class="home">
     <el-container>
       <!-- 侧边栏 -->
-      <transition name="slide-in">
+      <transition
+        name="slide-in"
+        @before-enter="beforeEnter"
+        @after-enter="afterEnter"
+      >
         <el-aside width="400px" v-show="isShow">
           <!-- 侧标题 -->
           <el-row>
@@ -28,7 +32,12 @@
               </el-col>
             </el-row>
             <el-row>
-              <el-input type="textarea" autosize v-model="subItem.content">
+              <el-input
+                v-if="inputEnable"
+                type="textarea"
+                autosize
+                v-model="subItem.content"
+              >
               </el-input>
             </el-row>
           </div>
@@ -63,7 +72,8 @@ export default {
       childData: {},
       asideTitle: '',
       //侧边栏
-      isShow: true
+      isShow: true,
+      inputEnable: true
     }
   },
   methods: {
@@ -78,7 +88,15 @@ export default {
     },
     //打开侧边栏 此方法用来传给子组件
     showAside() {
-      this.isShow = true
+      this.isShow = true;
+    },
+    // 开始打开侧边栏
+    beforeEnter() {
+      this.inputEnable = false;
+    },
+    // 结束打开侧边栏
+    afterEnter() {
+      this.inputEnable = true;
     }
   }
 }
